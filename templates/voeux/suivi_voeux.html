@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Suivi de vos vœux</h2>
+<a href="{% url 'voeux:depot_voeux' %}" class="btn btn-primary mb-3">Déposer un nouveau vœu</a>
+{% if voeux %}
+<table class="table table-striped mt-3">
+    <thead>
+        <tr>
+            <th>Formation</th>
+            <th>École</th>
+            <th>Date de dépôt</th>
+            <th>Statut</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for v in voeux %}
+        <tr>
+            <td>{{ v.formation.nom }}</td>
+            <td>{{ v.formation.ecole.nom }}</td>
+            <td>{{ v.date_depot|date:"d/m/Y H:i" }}</td>
+            <td>
+              {% if v.statut == "Accepté" %}
+                <span class="badge bg-success">{{ v.statut }}</span>
+              {% elif v.statut == "Refusé" %}
+                <span class="badge bg-danger">{{ v.statut }}</span>
+              {% else %}
+                <span class="badge bg-secondary">{{ v.statut }}</span>
+              {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Vous n’avez pas encore déposé de vœux.</p>
+{% endif %}
+{% endblock %}

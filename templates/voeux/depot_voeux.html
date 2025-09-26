@@ -1,0 +1,11 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Déposer un vœu</h2>
+<form method="post" class="mb-3">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Déposer</button>
+</form>
+<a href="{% url 'voeux:suivi_voeux' %}">Voir mes vœux</a>
+{% endblock %}

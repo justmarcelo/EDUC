@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="text-center mt-5">
+    <h1>Bienvenue sur EDUC&nbsp;!</h1>
+    <p>La plateforme d’orientation scolaire pour le Congo.</p>
+    {% if not user.is_authenticated %}
+        <a href="{% url 'users:inscription' %}" class="btn btn-success mt-3">Créer un compte</a>
+        <a href="{% url 'users:connexion' %}" class="btn btn-outline-primary mt-3 ms-2">Se connecter</a>
+    {% else %}
+        <a href="{% url 'voeux:depot_voeux' %}" class="btn btn-primary mt-3">Déposer un vœu</a>
+        <a href="{% url 'voeux:suivi_voeux' %}" class="btn btn-outline-secondary mt-3 ms-2">Voir mes vœux</a>
+    {% endif %}
+</div>
+{% endblock %}
