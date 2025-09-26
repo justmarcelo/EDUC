@@ -1,38 +1,44 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Suivi de vos vœux</h2>
-<a href="{% url 'voeux:depot_voeux' %}" class="btn btn-primary mb-3">Déposer un nouveau vœu</a>
-{% if voeux %}
-<table class="table table-striped mt-3">
-    <thead>
-        <tr>
-            <th>Formation</th>
-            <th>École</th>
-            <th>Date de dépôt</th>
-            <th>Statut</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for v in voeux %}
-        <tr>
-            <td>{{ v.formation.nom }}</td>
-            <td>{{ v.formation.ecole.nom }}</td>
-            <td>{{ v.date_depot|date:"d/m/Y H:i" }}</td>
-            <td>
-              {% if v.statut == "Accepté" %}
-                <span class="badge bg-success">{{ v.statut }}</span>
-              {% elif v.statut == "Refusé" %}
-                <span class="badge bg-danger">{{ v.statut }}</span>
-              {% else %}
-                <span class="badge bg-secondary">{{ v.statut }}</span>
-              {% endif %}
-            </td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
-{% else %}
-<p>Vous n’avez pas encore déposé de vœux.</p>
-{% endif %}
+<div class="row justify-content-center align-items-center" style="min-height: 65vh;">
+    <div class="col-md-10 educ-card">
+        <h2 class="mb-4" style="color: #197278;">Suivi de vos vœux</h2>
+        <a href="{% url 'voeux:depot_voeux' %}" class="btn btn-educ mb-3">Déposer un nouveau vœu</a>
+        {% if voeux %}
+        <div class="table-responsive">
+            <table class="table table-striped align-middle rounded">
+                <thead style="background: #f7c948;">
+                    <tr>
+                        <th>Formation</th>
+                        <th>École</th>
+                        <th>Date de dépôt</th>
+                        <th>Statut</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for v in voeux %}
+                    <tr>
+                        <td>{{ v.formation.nom }}</td>
+                        <td>{{ v.formation.ecole.nom }}</td>
+                        <td>{{ v.date_depot|date:"d/m/Y H:i" }}</td>
+                        <td>
+                          {% if v.statut == "Accepté" %}
+                            <span class="badge bg-success">{{ v.statut }}</span>
+                          {% elif v.statut == "Refusé" %}
+                            <span class="badge bg-danger">{{ v.statut }}</span>
+                          {% else %}
+                            <span class="badge bg-secondary">{{ v.statut }}</span>
+                          {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+        {% else %}
+        <p class="mt-4 text-secondary">Vous n’avez pas encore déposé de vœux.</p>
+        {% endif %}
+    </div>
+</div>
 {% endblock %}

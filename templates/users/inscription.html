@@ -1,11 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h2>Inscription</h2>
-<form method="post" class="mb-3">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <button type="submit" class="btn btn-primary">S’inscrire</button>
-</form>
-<p class="mt-3">Déjà inscrit ? <a href="{% url 'users:connexion' %}">Connectez-vous</a></p>
+<div class="row justify-content-center align-items-center" style="min-height: 65vh;">
+    <div class="col-md-5 educ-card">
+        <h2 class="mb-4" style="color: #197278;">Inscription</h2>
+        <form method="post" class="educ-form mb-3">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-educ btn-lg mt-2">S’inscrire</button>
+        </form>
+        <p class="mt-3 text-secondary">
+            Déjà inscrit ? <a href="{% url 'users:connexion' %}" class="link-primary">Connectez-vous</a>
+        </p>
+    </div>
+</div>
 {% endblock %}

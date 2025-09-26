@@ -1,23 +1,28 @@
 {% extends 'base.html' %}
+{% load static %}
+
 
 {% block content %}
 <div class="row justify-content-center align-items-center" style="min-height: 65vh;">
-    <div class="col-md-8 text-center p-5 shadow rounded" style="background: #181c20;">
-        <h1 class="display-4 mb-3" style="color: #b89b1a; font-weight: bold;">
-            Bienvenue sur <span style="color: #fff;">EDUC</span> !
+    <div class="col-md-8 text-center educ-card">
+        
+        <img src="{% static 'img/logo_educ.png' %}" alt="Logo EDUC" style="height: 80px;" class="mb-4">
+
+        <h1 class="display-4 mb-3" style="color: #197278; font-weight: bold;">
+            Bienvenue sur <span style="color: #f7c948;">EDUC</span> !
         </h1>
-        <p class="lead mb-4" style="color: #f5f5f5;">
+        <p class="lead mb-4" style="color: #393e46;">
             La plateforme d’orientation scolaire pensée pour les étudiants du Congo-Brazzaville.<br>
-            <span style="color: #009543; font-weight: bold;">Déposez vos vœux</span>,
-            <span style="color: #b89b1a; font-weight: bold;">suivez vos candidatures</span>,
+            <span style="color: #197278; font-weight: bold;">Déposez vos vœux</span>,
+            <span style="color: #f7c948; font-weight: bold;">suivez vos candidatures</span>,
             <span style="color: #8b1815; font-weight: bold;">bâtissez votre avenir !</span>
         </p>
         {% if not user.is_authenticated %}
-            <a href="{% url 'users:inscription' %}" class="btn btn-congo btn-lg me-2">Créer un compte</a>
-            <a href="{% url 'users:connexion' %}" class="btn btn-outline-light btn-lg">Se connecter</a>
+            <a href="{% url 'users:inscription' %}" class="btn btn-educ btn-lg me-2">Créer un compte</a>
+            <a href="{% url 'users:connexion' %}" class="btn btn-outline-primary btn-lg">Se connecter</a>
         {% else %}
-            <a href="{% url 'voeux:depot_voeux' %}" class="btn btn-congo btn-lg me-2">Déposer un vœu</a>
-            <a href="{% url 'voeux:suivi_voeux' %}" class="btn btn-outline-light btn-lg">Voir mes vœux</a>
+            <a href="{% url 'voeux:depot_voeux' %}" class="btn btn-educ btn-lg me-2">Déposer un vœu</a>
+            <a href="{% url 'voeux:suivi_voeux' %}" class="btn btn-outline-secondary btn-lg">Voir mes vœux</a>
         {% endif %}
     </div>
 </div>

@@ -13,51 +13,80 @@
             height: 100%;
         }
         body {
-            background: #23272b;
+            background: #f5f6fa;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
         }
-        .navbar-congo {
-            background: linear-gradient(90deg, #00512e 0%, #b89b1a 50%, #8b1815 100%);
+        .navbar-educ {
+            background: #197278;
+            border-bottom: 3px solid #f7c948;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.08);
         }
         .navbar-brand {
             font-weight: bold;
-            color: #fff !important;
+            color: #f7c948 !important;
             letter-spacing: 2px;
         }
         .nav-link {
-            color: #f8f9fa !important;
+            color: #fff !important;
             font-weight: 500;
         }
-        .btn-congo {
-            background: linear-gradient(90deg, #00512e 0%, #b89b1a 50%, #8b1815 100%);
+        .nav-link.active, .nav-link:hover {
+            color: #f7c948 !important;
+        }
+        .btn-educ {
+            background: #197278;
             color: #fff;
             border: none;
             font-weight: bold;
+            border-radius: 2rem;
+            box-shadow: 0 2px 8px rgba(44,62,80,0.10);
+            transition: background 0.2s;
         }
-        .btn-congo:hover {
-            background: #00512e;
-            color: #fff;
+        .btn-educ:hover {
+            background: #f7c948;
+            color: #197278;
         }
-        .footer-congo {
-            background: #00512e;
+        .footer-educ {
+            background: #197278;
             color: #fff;
             padding: 10px 0;
             text-align: center;
             margin-top: auto;
             width: 100%;
             letter-spacing: 1px;
+            border-top: 2px solid #f7c948;
         }
         .container {
             flex: 1 0 auto;
         }
+        /* Encadrés élégants */
+        .educ-card {
+            background: #fff;
+            border-radius: 2rem;
+            box-shadow: 0 4px 24px rgba(44,62,80,0.10);
+            padding: 2.5rem 2rem;
+        }
+        /* Pour les formulaires */
+        .educ-form input, .educ-form select, .educ-form textarea {
+            border-radius: 1.5rem !important;
+            border: 1px solid #e0e1e2 !important;
+        }
+        .educ-form label {
+            color: #197278;
+            font-weight: 500;
+        }
     </style>
 </head>
 <body>
-<nav class="navbar navbar-expand-lg navbar-congo mb-4">
+<nav class="navbar navbar-expand-lg navbar-educ mb-4">
   <div class="container-fluid">
-    <a class="navbar-brand" href="{% url 'home' %}">EDUC</a>
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'home' %}">
+    <img src="{% static 'img/logo_educ.png' %}" alt="Logo EDUC" style="height: 80px;" class="mb-4">
+    EDUC
+</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -88,7 +117,7 @@
     {% block content %}{% endblock %}
 </div>
 
-<footer class="footer-congo">
+<footer class="footer-educ">
     Plateforme EDUC – Congo-Brazzaville © {% now "Y" %}
 </footer>
 
